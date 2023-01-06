@@ -84,9 +84,9 @@
 
         clearInterval(timer);
         if (player === 'white') {
-            document.getElementById("buttonWhite").style.background='#FFFFFF';
             document.getElementById("buttonWhite").disabled = true;
-            document.getElementById("buttonBlack").style.background='#3CB371';
+            document.getElementById("buttonWhite").style.borderColor= document.getElementById("buttonBlack").style.borderColor;
+            document.getElementById("buttonBlack").style.borderColor='#3CB371';
             document.getElementById("buttonBlack").disabled = false;
             timer = setInterval(() => {
                 if (timeBreak === false) {
@@ -100,9 +100,9 @@
             }, 10);
         } else {
             document.getElementById("buttonWhite").disabled = false;
-            document.getElementById("buttonWhite").style.background='#3CB371';
+            document.getElementById("buttonBlack").style.borderColor= document.getElementById("buttonWhite").style.borderColor;
+            document.getElementById("buttonWhite").style.borderColor='#3CB371';
             document.getElementById("buttonBlack").disabled = true;
-            document.getElementById("buttonBlack").style.background='#000000';
             timer = setInterval(() => {
                 if (timeBreak === false) {
                     timeWhite--;
