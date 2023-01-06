@@ -25,9 +25,6 @@
             font-size: 15rem;
             border-width: 20px;
         }
-        .player {
-            padding: 20px;
-        }
         .black {
             background-color: black;
             color: white;
@@ -42,20 +39,31 @@
         }
         .span180 {
             transform: rotate(180deg);
+        }
+        .spanFull {
             width:100%;
             height:100%;
+        }
+        label {
+            font-size: 2rem;
         }
     </style>
 </head>
 <body>
 <div class="clock">
     <span class="span180">
-        <button onclick="stopTimer('white')" id="buttonWhite" class="white player"></button>
+        <label class="black" id="labelBlack"></label>
+    </span>
+    <span class="span180 spanFull">
+        <button onclick="stopTimer('white')" id="buttonWhite" class="white"></button>
     </span>
     <span style="width: 50%">
         <button onclick="toggleBreak()" id="buttonTimeBreak" class="break" disabled>Pause</button>
     </span>
-    <button onclick="stopTimer('black')" id="buttonBlack"  class="black player" disabled></button>
+    <button onclick="stopTimer('black')" id="buttonBlack"  class="black" disabled></button>
+    <span>
+        <label class="white" id="labelWhite"></label>
+    </span>
 </div>
 <script>
     let queryParams = new Proxy(new URLSearchParams(window.location.search), { get: (searchParams, prop) => searchParams.get(prop) });
@@ -119,6 +127,9 @@
     function updateTime() {
         document.getElementById("buttonWhite").textContent = formatTime(timeWhite);
         document.getElementById("buttonBlack").textContent = formatTime(timeBlack);
+
+        document.getElementById("labelWhite").textContent = formatTime(timeWhite);
+        document.getElementById("labelBlack").textContent = formatTime(timeBlack);
     }
 
     function formatTime(timeIn10Millis) {
